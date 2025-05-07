@@ -1,0 +1,23 @@
+---
+- name: display varialbles
+  debug:
+    msg:
+      - "node_inventory_header: {{ node_inventory_header }}"
+      - "node_inventory_file: {{ node_inventory_file }}"
+
+- name: display masters
+  debug:
+    msg:
+      - "master_nodes: {{ master_nodes }}"
+      - "master_node1: {{ master_nodes[1] }}"
+      - "node1: {{ master_nodes[1].name }}"
+
+- include_tasks: display.yml
+  loop: "{{ master_nodes }}"
+  loop_control:
+    loop_var: master_node
+
+- import_tasks: create_inventory_file.yml
+
+- import_tasks: populate_inventory_file.yml
+

@@ -1,0 +1,19 @@
+appcode: abc
+cluster_name: new-ocp4-all
+nodecount: 10-fromallall
+mastercount: 3-fromallall
+inventory_header: header-for-ALL
+inventory_file: file_for-ALL
+
+nodename_FQDN:
+#   roles: values >> bootstrap | master | infra | app
+cluster_role: master-fromallall
+#cluster_gateway: 192.168.10.1
+cluster_network_name: commonNetwork4all
+#node_macaddr:
+#cluster_num_cpus: 8
+#cluster_num_cpu_cores_per_socket:
+#cluster_memory_gb:
+#cluster_disk_gb:
+#ignition_config: values >> bootstrap.ign | master.ign | worker.ign
+#cluster_ignition: bootstrap

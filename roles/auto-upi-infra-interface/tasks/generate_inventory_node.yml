@@ -1,0 +1,83 @@
+---
+- name: setvar
+  ansible.builtin.set_fact:
+     nodename_FQDN: "{{ master_node.name }}"
+     ipaddr: "{{ master_node.ip }}"
+     node_num_cpu_cores_per_socket: "{{ master_num_cpu_cores_per_socket }}"
+     memory_gb: "{{ master_memory_gb }}"
+     memory_disk_gb: "{{ master_disk_gb }}"
+
+- name: setvar
+  ansible.builtin.set_fact:
+    nodename_FQDN: "{{ master_node.name }}"
+    node_role: "{{ master_role }}"
+    node_ipaddr: "{{ master_node.ip }}"
+    node_gateway: "{{ master_node.gateway | default(cluster_gateway) }}"
+    node_network_name: "{{ master_node.network_name | default(cluster_network_name) }}"
+    node_macaddr: "{{ master_node.macaddr | default(omit) }}"
+    node_num_cpus: "{{ master_node.num_cpus | default(master_num_cpus) }}"
+    node_num_cpu_cores_per_socket: "{{ master_node.num_cpu_cores_per_socket | default(master_num_cpu_cores_per_socket) }}"
+    memory_gb: "{{ master_node.memory_gb | default(master_memory_gb) }}"
+    node_disk_gb: "{{ master_node.node_disk_gb | default(master_disk_gb) }}"
+    node_ignition: "{{ master_ignition }}"
+
+#   hostname: {{ nodename_FQDN }}
+#   roles: [ {{ node_role }} ]
+#   ipaddr: {{ node_ipaddr }}
+#   gateway: {{ node_gateway }}
+#   network_name: {{ node_network_name }}
+#   macaddr: {{ node_macaddr }}
+#   num_cpus: {{ node_num_cpus }}
+#   num_cpu_cores_per_socket: {{ node_num_cpu_cores_per_socket }}
+#   memory_gb: {{ node_memory_gb }}
+#   disk_gb: {{ node_disk_gb }}
+#   ignition_config: {{ node_ignition }}.ign
+
+- name: display varialbles for template
+  debug:
+    msg:
+      - "node_role: {{ node_role }}"
+      - "node_network_name: {{ node_network_name }}"
+
+- name: display loop varialbles
+  debug:
+    msg:
+      - "loop variable: {{ master_node }}"
+      - "name: {{ master_node.name }}"
+      - "hostname: {{ nodename_FQDN }}"
+      - "role: {{ node_role }}"
+      - "ipaddr: {{ ipaddr }}"
+      - "gateway: {{ node_gateway }}"
+      - "network_name: {{ node_network_name }}"
+      - "macaddr: {{ node_macaddr }}"
+      - "num_cpus: {{ node_num_cpus }}"
+      - "num_cpu_cores_per_socket: {{ node_num_cpu_cores_per_socket }}"
+      - "memory_gb: {{ node_memory_gb }}"
+      - "disk_gb: {{ node_disk_gb }}"
+      - "ignition_config: {{ node_ignition }}.ign"
+      - "master_memory_gb: {{ master_memory_gb }}"
+      - "master_num_cpu_cores_per_socket: {{ master_num_cpu_cores_per_socket }}"
+      - "master_num_cpus: {{ master_num_cpus }}"
+
+#- name: load node specific variables
+    #ansible.builtin.set_fact:
+#      num_cpus: "{{ master_node.num_cpus }}"
+#  when: (master_node.num_cpus | length == 0)
+  
+# tasks file for auto-upi-infra-interface
+- name: Jinja 2 template the install-config.yaml file
+  template:
+    src:  openshift_cluster_hosts.yml.j2
+    dest:  "{{ temp_node_file.path }}"
+#    dest:  "{{ yaml_directory }}/openshift_cluster_hosts.yml"
+
+- name: Add Ansible code block for {{ cluster_name }}
+  blockinfile:
+    path: '{{ node_inventory_file }}'
+    #insertafter: "openshift_cluster_hosts:"
+    insertafter: "^{{ node_inventory_header }}"
+    block: "NEW Contents of node definitions...."
+    #block: "{{ node_inventory_header }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - cluster node definitions for cluster: {{ cluster_name }}"
+    state: present
+

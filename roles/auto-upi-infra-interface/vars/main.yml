@@ -1,0 +1,16 @@
+---
+# vars file for auto-upi-infra-interface
+#cluster_name:
+#node_inventory_file:
+#nodename_FQDN:
+#node_role:
+#node_ipaddr:
+#node_gateway:
+#node_network_name:
+#node_macaddr:
+#node_num_cpus:
+#node_num_cpu_cores_per_socket:
+#node_memory_gb:
+#node_disk_gb:
+#node_ignition:
+

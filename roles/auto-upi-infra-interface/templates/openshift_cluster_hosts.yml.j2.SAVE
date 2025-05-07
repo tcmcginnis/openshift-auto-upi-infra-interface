@@ -1,0 +1,35 @@
+# Inventory_file: {{ node_inventory_header }}
+  - hostname: {{ nodename_FQDN }}
+#   roles: values >> bootstrap | master | infra | app
+    roles: [ {{ node_role }} ]
+#{% if node_ipaddr }
+    ipaddr: {{ node_ipaddr }}
+#{% endif %}
+#{% if node_gateway }
+    gateway: {{ node_gateway }}
+#{% endif %}
+#{% if node_network_name }
+    network_name: {{ node_network_name }}
+#{% endif %}
+#{% if node_macaddr }
+    macaddr: {{ node_macaddr }}
+#{% endif %}
+{% if node_num_cpus %}
+    num_cpus: {{ node_num_cpus }}
+{% endif %}
+#{% if node_num_cpu_cores_per_socket }
+    num_cpu_cores_per_socket: {{ node_num_cpu_cores_per_socket }}
+#{% endif %}
+#{% if node_memory_gb }
+    memory_gb: {{ node_memory_gb }}
+#{% endif %}
+#{% if node_disk_gb` }
+    disk_gb: {{ node_disk_gb }}
+#{% endif %}
+#   ignition_config: values >> bootstrap.ign | master.ign | worker.ign
+    ignition_config: {{ node_ignition }}.ign
+#    ignition_transform:
+#      filetranspiler_roots:
+#        - files/ignition/filetranspiler/bootstrap
+#      jsonpatches:
+#        - files/ignition/jsonpatch/bootstrap/password.json

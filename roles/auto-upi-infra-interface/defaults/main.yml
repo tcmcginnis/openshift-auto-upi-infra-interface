@@ -1,0 +1,16 @@
+---
+# defaults file for auto-upi-infra-interface
+cluster_name: unknown
+node_inventory_file: "/tmp/openshift_cluster_hosts.yml"
+node_inventory_header: "{{ lookup('template', 'openshift_cluster_hosts.yml.header') | trim }}"
+nodename_FQDN:
+node_role:
+node_ipaddr:
+node_gateway:
+node_network_name:
+node_macaddr:
+node_num_cpus:
+node_num_cpu_cores_per_socket:
+node_memory_gb:
+node_disk_gb:
+node_ignition:

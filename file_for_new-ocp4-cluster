@@ -1,0 +1,5 @@
+header-for-ALL
+# BEGIN ANSIBLE MANAGED BLOCK - cluster node definitions for cluster: new-ocp4-cluster
+NEW Contents of node definitions....
+# END ANSIBLE MANAGED BLOCK - cluster node definitions for cluster: new-ocp4-cluster
+openshift_cluster_hosts:
