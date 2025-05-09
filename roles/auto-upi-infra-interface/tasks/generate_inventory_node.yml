@@ -1,5 +1,5 @@
 ---
-- name: setvar
+- name: Load template variables for the node template
   ansible.builtin.set_fact:
     nodename_FQDN: "{{ master_node.name }}"
     node_role: "{{ master_role }}"

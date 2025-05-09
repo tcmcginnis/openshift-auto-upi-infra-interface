@@ -1,18 +1,11 @@
 ---
-- name: display varialbles
+- name: display inventory location and header
   debug:
     msg:
       - "node_inventory_header: {{ node_inventory_header }}"
       - "node_inventory_file: {{ node_inventory_file }}"
 
-- name: display masters
-  debug:
-    msg:
-      - "master_nodes: {{ master_nodes }}"
-      - "master_node1: {{ master_nodes[1] }}"
-      - "node1: {{ master_nodes[1].name }}"
-
-- include_tasks: display.yml
+- include_tasks: display_masters.yml
   loop: "{{ master_nodes }}"
   loop_control:
     loop_var: master_node
