@@ -1,4 +1,9 @@
 ---
+- name: remove inventory file (if present)
+  ansible.builtin.file:
+    path: "{{ node_inventory_file }}"
+    state: absent
+
 - name: Create file (if missing) and set permissions
   ansible.builtin.file:
     path: "{{ node_inventory_file }}"
