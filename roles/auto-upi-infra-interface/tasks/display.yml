@@ -1,7 +1,0 @@
----
-- name: display varialbles
-  debug:
-    msg:
-      - "loop variable: {{ master_node }}"
-      - "name: {{ master_node.name }}"
-
