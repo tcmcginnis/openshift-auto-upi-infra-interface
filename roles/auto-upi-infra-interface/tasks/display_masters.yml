@@ -1,7 +1,6 @@
 ---
-- name: display control plane masters
+- name: Display control plane masters
   debug:
     msg:
       - "loop variable: {{ master_node }}"
       - "name: {{ master_node.name }}"
-
