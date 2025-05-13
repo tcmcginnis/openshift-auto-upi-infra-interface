@@ -1,0 +1,48 @@
+---
+- name: Load template variables for the node template
+  ansible.builtin.set_fact:
+    nodename_FQDN: "{{ worker_node.name }}"
+    node_role: "{{ worker_role }}"
+    node_ipaddr: "{{ worker_node.ip }}"
+    node_gateway: "{{ worker_node.gateway | default(cluster_gateway) }}"
+    node_network_name: "{{ worker_node.network_name | default(cluster_network_name) }}"
+    node_macaddr: "{{ worker_node.macaddr | default(omit) }}"
+    node_num_cpus: "{{ worker_node.num_cpus | default(worker_num_cpus) }}"
+    node_num_cpu_cores_per_socket: "{{ worker_node.num_cpu_cores_per_socket | default(worker_num_cpu_cores_per_socket) }}"
+    node_memory_gb: "{{ worker_node.memory_gb | default(worker_memory_gb) }}"
+    node_disk_gb: "{{ worker_node.node_disk_gb | default(worker_disk_gb) }}"
+    node_ignition: "{{ worker_ignition }}"
+
+- name: display loop varialbles
+  debug:
+    msg:
+      - "loop variable: {{ worker_node }}"
+      - "name: {{ worker_node.name }}"
+      - "hostname: {{ nodename_FQDN }}"
+      - "role: {{ node_role }}"
+      - "ipaddr: {{ node_ipaddr }}"
+      - "gateway: {{ node_gateway }}"
+      - "network_name: {{ node_network_name }}"
+      - "macaddr: {{ node_macaddr }}"
+      - "num_cpus: {{ node_num_cpus }}"
+      - "num_cpu_cores_per_socket: {{ node_num_cpu_cores_per_socket }}"
+      - "memory_gb: {{ node_memory_gb }}"
+      - "disk_gb: {{ node_disk_gb }}"
+      - "ignition_config: {{ node_ignition }}.ign"
+      - "worker_memory_gb: {{ worker_memory_gb }}"
+      - "worker_num_cpu_cores_per_socket: {{ worker_num_cpu_cores_per_socket }}"
+      - "worker_num_cpus: {{ worker_num_cpus }}"
+
+# tasks file for auto-upi-infra-interface
+- name: Jinja 2 template the install-config.yaml file
+  template:
+    src:  openshift_cluster_hosts.yml.j2
+    dest:  "{{ temp_node_file.path }}"
+
+- name: add to file
+  blockinfile:
+    path: '{{ node_inventory_file }}'
+    insertafter: eof
+    block: "{{lookup('file', '{{ temp_node_file.path }}')}}"
+    marker: ""
+
