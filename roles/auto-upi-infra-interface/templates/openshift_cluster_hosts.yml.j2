@@ -1,5 +1,4 @@
   - hostname: {{ nodename_FQDN }}
-#   roles: values >> bootstrap | master | infra | app
     roles: [ {{ node_role }} ]
 {% if node_ipaddr %}
     ipaddr: {{ node_ipaddr }}
@@ -21,10 +20,4 @@
 {% endif %}
     memory_gb: {{ node_memory_gb }}
     disk_gb: {{ node_disk_gb }}
-#   ignition_config: values >> bootstrap.ign | master.ign | worker.ign
     ignition_config: {{ node_ignition }}.ign
-#    ignition_transform:
-#      filetranspiler_roots:
-#        - files/ignition/filetranspiler/bootstrap
-#      jsonpatches:
-#        - files/ignition/jsonpatch/bootstrap/password.json
