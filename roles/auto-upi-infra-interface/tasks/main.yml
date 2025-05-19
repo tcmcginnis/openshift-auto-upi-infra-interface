@@ -14,3 +14,4 @@
 
 - import_tasks: populate_inventory_file.yml
 
+- import_tasks: vsphere_config.yml

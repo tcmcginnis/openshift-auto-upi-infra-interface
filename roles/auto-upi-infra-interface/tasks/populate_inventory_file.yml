@@ -16,6 +16,11 @@
   loop_control:
     loop_var: master_node
 
+- include_tasks: generate_inventory-infra.yml
+  loop: "{{ infra_nodes }}"
+  loop_control:
+    loop_var: infra_node
+
 - include_tasks: generate_inventory-workers.yml
   loop: "{{ worker_nodes }}"
   loop_control:

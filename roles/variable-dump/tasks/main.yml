@@ -1,0 +1,24 @@
+---
+# tasks file for variable-dump
+
+#- name: print all variables
+#  debug:
+#    var=vars
+
+- name: display varialbles
+  debug:
+    msg:
+      - "master_nodes: {{ master_nodes }}"
+      - "infra_nodes: {{ infra_nodes }}"
+      - "worker_nodes: {{ worker_nodes }}"
+      - "cluster_num_cpus: {{ cluster_num_cpus }}"
+      - vsphere variable: '{{ vsphere }}'
+      - vsphere variable: '{{ vsphere.datacenter_name }}'
+
+- name: varlookup
+  ansible.builtin.debug: msg="{{ lookup('ansible.builtin.varnames', '^vsphere.*') }}"
+
+- name: varlook
+  ansible.builtin.debug: msg="{{ q('varnames', 'vsphere.') }}"
+# ansible.builtin.debug: msg="{{ q('varnames', 'hosts') }}"
+

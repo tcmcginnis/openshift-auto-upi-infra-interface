@@ -1,0 +1,6 @@
+- hosts: helper
+  user: root
+  vars:
+  roles:
+  - role: variable-dump
+

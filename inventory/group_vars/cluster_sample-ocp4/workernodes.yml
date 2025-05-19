@@ -11,6 +11,7 @@ worker_nodes:
    ip: 192.168.0.105
  - name: sample_compute2
    ip: 192.168.0.106
+   macaddr: 00:50:56:97:e2:ff
  - name: sample_compute3
    ip: 192.168.0.107
 

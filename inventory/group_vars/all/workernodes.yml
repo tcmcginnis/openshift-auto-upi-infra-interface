@@ -9,8 +9,13 @@ worker_ignition: master-fromallall
 #worker_nodes:
 # - name: sample_compute1
 #   ip: 192.168.0.105
+#   macaddr: 00:50:56:97:e2:fd
+
 # - name: sample_compute2
 #   ip: 192.168.0.106
+#   macaddr: 00:50:56:97:e2:fe
+
 # - name: sample_compute3
 #   ip: 192.168.0.107
+#   macaddr: 00:50:56:97:e2:ff
 
