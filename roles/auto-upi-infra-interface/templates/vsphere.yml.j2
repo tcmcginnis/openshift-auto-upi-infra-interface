@@ -1,9 +1,9 @@
 vsphere:
-  vcenter_hostname: {{ vsphere.vcenter_hostname }}
-  vcenter_username: {{ vsphere.vcenter_username }}
-  vcenter_password: {{ vsphere.vcenter_password }}
+  vcenter_hostname: {{ vsphere_creds.vcenter_hostname }}
+  vcenter_username: {{ vsphere_creds.vcenter_username }}
+  vcenter_password: {{ vsphere_creds.vcenter_password }}
   # Verify server certificate when connecting to vSphere
-  validate_certs: {{ vsphere.validate_certs }}
+  validate_certs: {{ vsphere_creds.validate_certs }}
   datacenter_name: {{ vsphere.datacenter_name }}
   datastore_name: {{ vsphere.datastore_name }}
   cluster_name: {{ vsphere.cluster_name }}
