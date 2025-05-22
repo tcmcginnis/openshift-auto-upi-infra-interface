@@ -1,0 +1,52 @@
+# install-config.yaml
+apiVersion: v1
+baseDomain: {{ cluster_base_domain }}
+metadata:
+  name: {{ cluster_name }}
+compute:
+- name: worker
+  replicas: {{ worker_replicas }}
+  platform:
+    aws:
+      zones:
+      {% for zone in aws_zones %}
+      - {{ zone }}
+      {% endfor %}
+      type: {{ worker_instance_type }}
+controlPlane:
+  name: master
+  replicas: {{ master_replicas }}
+  platform:
+    aws:
+      zones:
+      {% for zone in aws_zones %}
+      - {{ zone }}
+      {% endfor %}
+      type: {{ master_instance_type }}
+platform:
+  aws:
+    region: {{ aws_region }}
+    # Optional: If you want to use an existing VPC and subnets
+    # subnets:
+    # {% for subnet in aws_subnets %}
+    # - {{ subnet }}
+    # {% endfor %}
+pullSecret: '{{ openshift_pull_secret }}'
+sshKey: |
+  {{ openshift_ssh_key }}
+networking:
+  clusterNetwork:
+  - cidr: {{ cluster_network_cidr }}
+    hostPrefix: {{ cluster_network_host_prefix }}
+  machineNetwork:
+  - cidr: {{ machine_network_cidr }}
+  networkType: {{ network_type }}
+  serviceNetwork:
+  - {{ service_network_cidr }}
+fips: {{ fips_enabled }}
+# Optional: If you want to configure proxy
+# proxy:
+#   httpProxy: {{ http_proxy | default('') }}
+#   httpsProxy: {{ https_proxy | default('') }}
+#   noProxy: {{ no_proxy | default('') }}
+

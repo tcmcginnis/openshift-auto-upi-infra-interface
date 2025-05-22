@@ -18,6 +18,12 @@
   debug:
     msg:
       - vsphere variable: '{{ vsphere }}'
+      - openshift_install_config: '{{ openshift_install_config }}'
+
+- name: display openshift_install_config.name
+  debug:
+    msg:
+      - openshift_install_config.name: '{{ openshift_install_config.name }}'
 
 # tasks file for vsphere config definition yaml
 - name: Jinja 2 template the install-config.yaml file
