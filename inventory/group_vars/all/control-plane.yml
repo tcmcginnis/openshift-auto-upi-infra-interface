@@ -1,6 +1,6 @@
 master_role: master
 master_num_cpus: 8
-#master_num_cpu_cores_per_socket: 2
+master_num_cpu_cores_per_socket: 2
 master_memory_gb: 32
 #master_network_name: default-network-name-for-all-control-planes
 master_disk_gb: 250
