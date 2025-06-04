@@ -1,0 +1,11 @@
+appcode: abc
+cluster_name: new-ocp4-cluster
+cluster_base_domain: mclabs.us
+cluster_network_name: commonNetwork4thisCluster
+cluster_gateway: 192.168.0.1
+nodecount: 9
+mastercount: 3
+inventory_file: file_for_new-ocp4-cluster
+OCP_version: 4.15
+master_replicas: 1
+worker_replicas: 1

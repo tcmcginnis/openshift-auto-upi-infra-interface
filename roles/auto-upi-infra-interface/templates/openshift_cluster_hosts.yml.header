@@ -1,0 +1,3 @@
+openshift_cluster_hosts:
+#   roles: values >> bootstrap | master | infra | app
+#   ignition_config: values >> bootstrap.ign | master.ign | worker.ign

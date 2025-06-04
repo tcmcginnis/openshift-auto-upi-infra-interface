@@ -1,0 +1,29 @@
+---
+- name: Create temporary file for node definitions
+  ansible.builtin.tempfile:
+    state: file
+    suffix: temp
+  register: temp_node_file
+
+- name: display varialbles
+  debug:
+    msg:
+      - "temp_node_file: {{ temp_node_file }}"
+      - "path: {{ temp_node_file.path }}"
+
+- include_tasks: generate_inventory-controlplane.yml
+  loop: "{{ master_nodes }}"
+  loop_control:
+    loop_var: master_node
+
+- include_tasks: generate_inventory-infra.yml
+  loop: "{{ infra_nodes }}"
+  loop_control:
+    loop_var: infra_node
+
+- include_tasks: generate_inventory-workers.yml
+  loop: "{{ worker_nodes }}"
+  loop_control:
+    loop_var: worker_node
+
+

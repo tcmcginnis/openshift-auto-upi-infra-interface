@@ -1,0 +1,18 @@
+---
+- name: remove inventory file (if present)
+  ansible.builtin.file:
+    path: "{{ node_inventory_file }}"
+    state: absent
+
+- name: Create file (if missing) and set permissions
+  ansible.builtin.file:
+    path: "{{ node_inventory_file }}"
+    mode: '0644'
+    state: touch
+
+- name: Add the node definition header for cluster {{ cluster_name }}
+  lineinfile:
+    state: present
+    path: "{{ node_inventory_file }}"
+    line: "{{ node_inventory_header }}"
+

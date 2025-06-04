@@ -1,0 +1,21 @@
+infra_role: infra
+infra_num_cpus: 4
+infra_num_cpu_cores_per_socket: 2
+infra_memory_gb: 8
+#infra_network_name: default-network-name-for-all-infras
+infra_disk_gb: 250
+infra_ignition: worker
+
+infra_nodes:
+ - name: sample_infra1
+   ip: 192.168.0.115
+   macaddr: 00:50:56:97:e2:aa
+
+ - name: sample_infra2
+   ip: 192.168.0.116
+   macaddr: 00:50:56:97:e2:bb
+
+ - name: sample_infra3
+   ip: 192.168.0.117
+   macaddr: 00:50:56:97:e2:cc
+

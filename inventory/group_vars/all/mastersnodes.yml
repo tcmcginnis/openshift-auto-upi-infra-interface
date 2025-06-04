@@ -1,0 +1,26 @@
+# master_nodes:
+#  - name: master1
+#    ipaddr: 192.168.0.201
+#    gateway: 192.168.10.1
+#    macaddr:
+#    num_cpus:
+#    num_cpu_cores_per_socket:
+#    memory_gb:
+#    disk_gb:
+#  - name: master2
+#    ipaddr: 192.168.0.202
+#    gateway: 192.168.10.1
+#    macaddr:
+#    num_cpus:
+#    num_cpu_cores_per_socket:
+#    memory_gb:
+#    disk_gb:
+#  - name: master3
+#    ipaddr: 192.168.0.203
+#    gateway: 192.168.10.1
+#    macaddr:
+#    num_cpus:
+#    num_cpu_cores_per_socket:
+#    memory_gb:
+#    disk_gb:
+

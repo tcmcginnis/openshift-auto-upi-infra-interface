@@ -1,0 +1,24 @@
+appcode: ocp
+# Clustser name should never have a default
+# cluster_name: new-ocp4-all
+cluster_base_domain:
+nodecount: 9
+mastercount: 3
+master_replicas: 1
+worker_replicas: 1
+inventory_header: header-for-ALL
+inventory_file: file_for-ALL
+OCP_version: 4.12.43
+
+nodename_FQDN:
+#   roles: values >> bootstrap | master | infra | app
+cluster_role: app
+#cluster_gateway: 192.168.10.1
+cluster_network_name: vmware-network-name
+#node_macaddr:
+cluster_num_cpus: 8
+cluster_num_cpu_cores_per_socket: 2
+cluster_memory_gb: 16
+cluster_disk_gb: 120
+#ignition_config: values >> bootstrap.ign | master.ign | worker.ign
+#cluster_ignition: bootstrap

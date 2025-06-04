@@ -1,0 +1,19 @@
+---
+- name: display inventory location and header
+  debug:
+    msg:
+      - "node_inventory_header: {{ node_inventory_header }}"
+      - "node_inventory_file: {{ node_inventory_file }}"
+
+- include_tasks: display_masters.yml
+  loop: "{{ master_nodes }}"
+  loop_control:
+    loop_var: master_node
+
+- import_tasks: create_inventory_file.yml
+
+- import_tasks: populate_inventory_file.yml
+
+- import_tasks: generate_openshift-install-config.yml
+
+- import_tasks: vsphere_config.yml

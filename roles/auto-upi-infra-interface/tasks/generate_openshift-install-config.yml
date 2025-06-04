@@ -1,0 +1,27 @@
+---
+- name: Load config file variable
+  ansible.builtin.set_fact:
+    install_config_file: "/tmp/openshift-install-config.yml"
+
+- name: remove vsphere config file (if present)
+  ansible.builtin.file:
+    path: "{{ install_config_file }}"
+    state: absent
+
+- name: Create file (if missing) and set permissions
+  ansible.builtin.file:
+    path: "{{ install_config_file }}"
+    mode: '0644'
+    state: touch
+
+- name: display install config varialbles
+  debug:
+    msg:
+      - cluster_name: '{{ cluster_name }}'
+
+# tasks file for openshift install config definition yaml
+- name: Jinja 2 template the install-config.yaml file
+  template:
+    src:  openshift_install_config.yml.j2
+    dest:  "{{ install_config_file }}"
+

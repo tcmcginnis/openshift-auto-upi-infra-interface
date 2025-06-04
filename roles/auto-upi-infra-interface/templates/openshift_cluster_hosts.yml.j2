@@ -1,0 +1,23 @@
+  - hostname: {{ nodename_FQDN }}
+    roles: [ {{ node_role }} ]
+{% if node_ipaddr %}
+    ipaddr: {{ node_ipaddr }}
+{% endif %}
+{% if node_gateway %}
+    gateway: {{ node_gateway }}
+{% endif %}
+{% if node_network_name %}
+    network_name: {{ node_network_name }}
+{% endif %}
+{% if node_macaddr %}
+    macaddr: {{ node_macaddr }}
+{% endif %}
+{% if node_num_cpus %}
+    num_cpus: {{ node_num_cpus }}
+{% endif %}
+{% if node_num_cpu_cores_per_socket %}
+    num_cpu_cores_per_socket: {{ node_num_cpu_cores_per_socket }}
+{% endif %}
+    memory_gb: {{ node_memory_gb }}
+    disk_gb: {{ node_disk_gb }}
+    ignition_config: {{ node_ignition }}.ign

@@ -1,0 +1,13 @@
+master_nodes:
+ - name: sample_master1
+   ip: 192.168.0.201-from-masternode
+   gateway: 192.168.0.111-from-masternode
+   num_cpus: 12-from-masternode
+   node_network_name: specifigNetworkName4master1
+ - name: sample_master2
+   ip: 192.168.0.202-from-masternode
+   num_cpus: 16-from-masternode
+ - name: sample_master3
+   ip: 192.168.0.203-from-masternode
+#   num_cpus: 18-from-masternode
+
