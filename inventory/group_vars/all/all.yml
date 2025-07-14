@@ -14,6 +14,7 @@ nodename_FQDN:
 #   roles: values >> bootstrap | master | infra | app
 cluster_role: app
 #cluster_gateway: 192.168.10.1
+cluster_netmask: 255.255.255.0
 cluster_network_name: vmware-network-name
 #node_macaddr:
 cluster_num_cpus: 8

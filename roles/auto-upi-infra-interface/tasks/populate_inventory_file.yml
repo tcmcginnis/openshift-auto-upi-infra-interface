@@ -21,9 +21,14 @@
   loop_control:
     loop_var: infra_node
 
+- name: display varialbles
+  debug:
+    msg:
+      - "worker_nodes: {{ worker_nodes }}"
 - include_tasks: generate_inventory-workers.yml
   loop: "{{ worker_nodes }}"
   loop_control:
     loop_var: worker_node
+  when: worker_nodes | length > 0
 
 

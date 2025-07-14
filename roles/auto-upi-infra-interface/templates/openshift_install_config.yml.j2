@@ -36,8 +36,8 @@ openshift_install_config:
     # Must enable in order to use the static IP provisioning.
     enabled: False
     parameters:
-      gateway: 192.168.150.1
-      netmask: 255.255.255.0
+      gateway: {{ cluster_gateway }}
+      netmask: {{ cluster_netmask }}
       # On oVirt, the network interface name is most likely "enp1s0".
       interface: enp1s0
       # List of DNS servers
