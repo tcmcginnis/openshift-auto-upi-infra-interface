@@ -1,0 +1,20 @@
+---
+# tasks file for onboarding-variable-dump
+
+#- name: print all variables
+#  debug:
+#    var=vars
+
+- name: display varialbles
+  debug:
+    msg:
+      - "nodecount: {{ nodecount }}"
+      - "mastercount: {{ mastercount }}"
+
+- name: varlookup
+  ansible.builtin.debug: msg="{{ lookup('ansible.builtin.varnames', '^vsphere.*') }}"
+
+- name: varlook
+  ansible.builtin.debug: msg="{{ q('varnames', 'vsphere.') }}"
+# ansible.builtin.debug: msg="{{ q('varnames', 'hosts') }}"
+

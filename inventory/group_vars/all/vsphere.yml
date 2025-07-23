@@ -4,7 +4,7 @@ vsphere_creds:
   vcenter_password: 'THIS NEED TO BE VAULTED'
   # Verify server certificate when connecting to vSphere
   validate_certs: False
-#vsphere:
+vsphere:
 #  datacenter_name: Datacenter
 #  datastore_name: Datastore
 #  cluster_name: Cluster

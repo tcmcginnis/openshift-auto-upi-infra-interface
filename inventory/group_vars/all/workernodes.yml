@@ -6,7 +6,7 @@ worker_memory_gb: 32
 worker_disk_gb: 250
 worker_ignition: worker
 
-#worker_nodes:
+worker_nodes:
 # - name: sample_compute1
 #   ip: 192.168.0.105
 #   macaddr: 00:50:56:97:e2:fd
