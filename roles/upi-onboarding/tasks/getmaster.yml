@@ -6,3 +6,4 @@
   ansible.builtin.debug:
     msg:
       - "hostname={{ hostname }}"
+      - "ip_address={{ ip_address }}"
