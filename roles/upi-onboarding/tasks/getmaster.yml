@@ -1,0 +1,8 @@
+
+- name: Get a DNS name and IP address
+  include_tasks: getIPdns.yml
+
+- name: display value within loop
+  ansible.builtin.debug:
+    msg:
+      - "hostname={{ hostname }}"

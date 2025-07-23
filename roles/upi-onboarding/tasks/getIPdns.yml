@@ -1,0 +1,12 @@
+- name: Generate a random 4-character lowercase alphanumeric string
+  ansible.builtin.set_fact:
+    clustername: "ocp"
+    hostid: "{{ lookup('community.general.random_string', length=4, special=false, upper=false, digits=true) }}"
+    random_ip: "{{ network_cidr | community.general.random_ip }}"
+
+- name: set node variables for hostname and server role
+  ansible.builtin.set_fact:
+    hostname: "{{ clustername }}-{{ hostid }}"
+    ipaddress: "{{ random_ip }}"
+    server_role: master
+

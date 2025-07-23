@@ -1,0 +1,12 @@
+---
+# tasks file for upi-onboarding
+- name: set key control variables for testing
+  set_fact:
+    mastercount: 3
+
+- name: Loop through getIPdns task using mastercount as iteration value
+  include_tasks: getmaster.yml
+  loop: "{{ range(mastercount | int) | list }}"
+  loop_control:
+    loop_var: current_iteration_index # Optional: provides the current loop index (0, 1, 2...)
+
