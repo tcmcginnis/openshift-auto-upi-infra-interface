@@ -1,0 +1,8 @@
+vsphere:
+  datacenter_name: {{ datacenter_name }}
+  datastore_name: {{ datastore_name }}
+  cluster_name: {{ cluster_name }}
+  network_name: {{ network_name }}
+  # Ensuring that folder name matches the cluster name specified in the install-config.yaml file
+  #target_folder: '{{ openshift_install_config.name }}'
+  template_name: RHCOS

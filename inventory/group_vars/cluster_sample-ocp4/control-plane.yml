@@ -1,8 +1,0 @@
-master_role: master
-master_num_cpus: 4
-#master_gateway: 192.168.0.2
-#master_num_cpu_cores_per_socket: 2
-master_memory_gb: 8
-master_disk_gb: 250
-#ignition_config: values >> bootstrap.ign | master.ign | worker.ign   (suffix .ign is added by automation)
-master_ignition: master
