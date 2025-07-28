@@ -1,12 +1,49 @@
 ---
 # tasks file for upi-onboarding
+- name: Create or validate config yaml path
+  ansible.builtin.file:
+    path: "{{ config_path }}"
+    state: directory
+
+- name: Jinja 2 template the inventory file for ocp auto
+  template:
+    src:  hosts.yml.j2
+    dest:  "{{ config_path }}/hosts-{{ cluster_name }}.yml"
+
+- name: Jinja 2 template the config yaml for the cluster
+  template:
+    src:  all.yml.j2
+    dest:  "{{ config_path }}/all.yml"
+
+- import_tasks: gettempfile.yml
+
 - name: set key control variables for testing
   set_fact:
     mastercount: 3
+    infracount: 3
+    workercount: 3
 
-- name: Loop through getIPdns task using mastercount as iteration value
-  include_tasks: getmaster.yml
-  loop: "{{ range(mastercount | int) | list }}"
-  loop_control:
-    loop_var: current_iteration_index # Optional: provides the current loop index (0, 1, 2...)
+- name: define control plane
+  include_tasks: controlplane.yml
 
+- name: define infra nodes
+  include_tasks: infra.yml
+
+- name: define worker nodes
+  include_tasks: workers.yml
+
+- name: set file permissions
+  ansible.builtin.file:
+    path: "{{ temp_node_file.path }}"
+    state: absent
+
+- name: Jinja 2 template the config yaml for vSphere
+  template:
+    src:  vsphere.yml.j2
+    dest:  "{{ config_path }}/vsphere.yml"
+
+- name: display varialbles
+  debug:
+    msg:
+      - "temp_node_file: {{ temp_node_file }}"
+      - "path: {{ temp_node_file.path }}"

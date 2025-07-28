@@ -2,8 +2,9 @@ appcode: ocp
 # Clustser name should never have a default
 # cluster_name: new-ocp4-all
 cluster_base_domain:
-nodecount: 9
 mastercount: 3
+infracount: 3
+workercount: 3
 master_replicas: 1
 worker_replicas: 1
 inventory_header: header-for-ALL

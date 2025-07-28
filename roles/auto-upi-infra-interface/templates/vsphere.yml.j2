@@ -1,13 +1,31 @@
 vsphere:
+{% if vsphere_creds.vcenter_hostname %}
   vcenter_hostname: {{ vsphere_creds.vcenter_hostname }}
+{% endif %}
+{% if vsphere_creds.vcenter_username %}
   vcenter_username: {{ vsphere_creds.vcenter_username }}
+{% endif %}
+{% if vsphere_creds.vcenter_password %}
   vcenter_password: {{ vsphere_creds.vcenter_password }}
+{% endif %}
   # Verify server certificate when connecting to vSphere
+{% if vsphere_creds.validate_certs %}
   validate_certs: {{ vsphere_creds.validate_certs }}
+{% endif %}
+{% if vsphere.datacenter_name %}
   datacenter_name: {{ vsphere.datacenter_name }}
+{% endif %}
+{% if vsphere.datastore_name %}
   datastore_name: {{ vsphere.datastore_name }}
+{% endif %}
+{% if vsphere.cluster_name %}
   cluster_name: {{ vsphere.cluster_name }}
+{% endif %}
+{% if vsphere.network_name %}
   network_name: {{ vsphere.network_name }}
+{% endif %}
   # Ensuring that folder name matches the cluster name specified in the install-config.yaml file
   target_folder: '{{ openshift_install_config.name | default('{{ openshift_install_config.name }}') }}'
+{% if vsphere.template_name %}
   template_name: {{ vsphere.template_name }}
+{% endif %}

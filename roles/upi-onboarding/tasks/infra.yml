@@ -1,0 +1,27 @@
+---
+# tasks file for control plane
+
+- name: Set key control variables
+  set_fact:
+    nodecount: "{{ infracount }}"
+    config_yaml_file: "{{ config_yaml_infra }}"
+    config_yaml_template: infranodes.yml.j2
+
+- name: Jinja 2 template the the defaults for various node types (master,infra,worker)
+  template:
+    src: "{{ config_yaml_template }}"
+    dest: "{{ config_yaml_file }}"
+    force: yes
+    mode: 0666
+
+- name: Loop through getIPdns task using nodecount as iteration value
+  include_tasks: getnode.yml
+  loop: "{{ range(nodecount | int) | list }}"
+  loop_control:
+    loop_var: current_iteration_index # Optional: provides the current loop index (0, 1, 2...)
+
+- name: Remove temp node file
+  ansible.builtin.file:
+    path: "{{ temp_node_file.path }}"
+    state: absent
+

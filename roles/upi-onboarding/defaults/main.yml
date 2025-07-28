@@ -3,3 +3,19 @@
 cluster_name: unknown
 network_subnet: 192.168.0
 network_cidr: 192.168.0/24
+config_path: /tmp
+config_yaml_master: "{{ config_path }}/masternodes.yml"
+config_yaml_infra: "{{ config_path }}/infranodes.yml"
+config_yaml_workers: "{{ config_path }}/workernodes.yml"
+
+mastercount: 3
+infracount: 3
+workercount: 3
+
+cluster_gateway:
+cluster_netmask:
+OCP_version:
+vsphere_datacenter_name:
+vsphere_datastore_name:
+vsphere_cluster_name:
+vsphere_network_name:

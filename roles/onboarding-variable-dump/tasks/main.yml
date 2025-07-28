@@ -8,8 +8,9 @@
 - name: display varialbles
   debug:
     msg:
-      - "nodecount: {{ nodecount }}"
       - "mastercount: {{ mastercount }}"
+      - "infracount: {{ infracount }}"
+      - "workercount: {{ workercount }}"
 
 - name: varlookup
   ansible.builtin.debug: msg="{{ lookup('ansible.builtin.varnames', '^vsphere.*') }}"
