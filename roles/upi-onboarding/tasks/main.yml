@@ -42,7 +42,7 @@
     src:  vsphere.yml.j2
     dest:  "{{ config_path }}/vsphere.yml"
 
-- name: display varialbles
+- name: display variables
   debug:
     msg:
       - "temp_node_file: {{ temp_node_file }}"
