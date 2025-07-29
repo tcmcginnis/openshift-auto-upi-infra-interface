@@ -12,7 +12,7 @@
     src: "{{ config_yaml_template }}"
     dest: "{{ config_yaml_file }}"
     force: yes
-    mode: 0666
+    mode: 0644
 
 - name: Loop through getIPdns task using nodecount as iteration value
   include_tasks: getnode.yml
