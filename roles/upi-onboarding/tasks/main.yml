@@ -5,6 +5,11 @@
     path: "{{ config_path }}"
     state: directory
 
+- name: Create or validate config yaml variable path
+  ansible.builtin.file:
+    path: "{{ config_vars_path }}"
+    state: directory
+
 - name: Jinja 2 template the inventory file for ocp auto
   template:
     src:  hosts.yml.j2
@@ -13,7 +18,7 @@
 - name: Jinja 2 template the config yaml for the cluster
   template:
     src:  all.yml.j2
-    dest:  "{{ config_path }}/all.yml"
+    dest:  "{{ config_vars_path }}/all.yml"
 
 - import_tasks: gettempfile.yml
 
@@ -40,5 +45,5 @@
 - name: Jinja 2 template the config yaml for vSphere
   template:
     src:  vsphere.yml.j2
-    dest:  "{{ config_path }}/vsphere.yml"
+    dest:  "{{ config_vars_path }}/vsphere.yml"
 

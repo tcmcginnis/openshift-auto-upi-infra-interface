@@ -1,3 +1,3 @@
 ---
 # vars file for upi-onboarding
-config_path: "/tmp/cluster_{{ cluster_name }}"
+#config_path: "/tmp/cluster_{{ cluster_name }}"
