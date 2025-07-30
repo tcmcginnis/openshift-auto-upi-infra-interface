@@ -1,9 +1,21 @@
 appcode: {{ appcode }}
 cluster_name: {{ cluster_name }}
 cluster_base_domain: {{ domain_name }}
-cluster_network_name: commonNetwork4thisCluster
+{% if cluster_network_name %}
+cluster_network_name: {{ cluster_network_name }}
+{% else %}
+# cluster_network_name:
+{% endif %}
+{% if cluster_gateway %}
 cluster_gateway: {{ cluster_gateway }}
+{% else %}
+# cluster_gateway:
+{% endif %}
+{% if cluster_netmask %}
 cluster_netmask: {{ cluster_netmask }}
+{% else %}
+# cluster_netmask:
+{% endif %}
 mastercount: {{ mastercount }}
 infracount: {{ infracount }}
 workercount: {{ workercount }}

@@ -1,3 +1,34 @@
 ---
 # vars file for upi-onboarding
-#config_path: "/tmp/cluster_{{ cluster_name }}"
+# GENERAL vars from all.yml
+cluster_network_name:
+cluster_gateway:
+cluster_netmask:
+OCP_version:
+
+# vars for master nodes
+master_num_cpus:
+master_gateway: 
+master_num_cpu_cores_per_socket:
+master_memory_gb:
+master_disk_gb:
+
+# vars for infra nodes
+infra_num_cpus:
+infra_num_cpu_cores_per_socket:
+infra_memory_gb:
+infra_network_name:
+infra_disk_gb:
+
+# vars for worker nodes
+worker_num_cpus:
+worker_num_cpu_cores_per_socket:
+worker_memory_gb:
+worker_network_name:
+worker_disk_gb:
+
+# vars for vSphere platform
+vsphere_datacenter_name:
+vsphere_datastore_name:
+vsphere_cluster_name:
+vsphere_network_name:

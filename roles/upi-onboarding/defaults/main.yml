@@ -13,10 +13,3 @@ mastercount: 3
 infracount: 3
 workercount: 3
 
-cluster_gateway:
-cluster_netmask:
-OCP_version:
-vsphere_datacenter_name:
-vsphere_datastore_name:
-vsphere_cluster_name:
-vsphere_network_name:

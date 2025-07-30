@@ -1,4 +1,9 @@
 ---
+- name: display value within loop
+  ansible.builtin.debug:
+    msg:
+      - "master_memory_gb={{ master_memory_gb }}"
+
 # tasks file for upi-onboarding
 - name: Create or validate config yaml path
   ansible.builtin.file:
@@ -15,7 +20,7 @@
     src:  hosts.yml.j2
     dest:  "{{ config_path }}/hosts-{{ cluster_name }}.yml"
 
-- name: Jinja 2 template the config yaml for the cluster
+- name: Jinja 2 template the "all.yml" config yaml for the cluster
   template:
     src:  all.yml.j2
     dest:  "{{ config_vars_path }}/all.yml"

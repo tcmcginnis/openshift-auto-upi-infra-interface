@@ -1,9 +1,31 @@
 worker_role: app
+
+{% if worker_num_cpus %}
+worker_num_cpus: {{ worker_num_cpus }}
+{% else %}
 worker_num_cpus: 4
+{% endif %}
+{% if worker_num_cpu_cores_per_socket %}
+worker_num_cpu_cores_per_socket: {{ worker_num_cpu_cores_per_socket }}
+{% else %}
 worker_num_cpu_cores_per_socket: 2
+{% endif %}
+{% if worker_memory_gb %}
+worker_memory_gb: {{ worker_memory_gb }}
+{% else %}
 worker_memory_gb: 8
+{% endif %}
+{% if worker_network_name %}
+worker_network_name: {{ worker_network_name }}
+{% else %}
 #worker_network_name: default-network-name-for-this-cluster-workers
+{% endif %}
+{% if worker_disk_gb %}
+worker_disk_gb: {{ worker_disk_gb }}
+{% else %}
 worker_disk_gb: 250
+{% endif %}
+
 worker_ignition: worker
 
 worker_nodes:

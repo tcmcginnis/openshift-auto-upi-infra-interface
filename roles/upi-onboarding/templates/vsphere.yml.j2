@@ -2,15 +2,23 @@
 vsphere:
 {% if vsphere_datacenter_name %}
   datacenter_name: {{ vsphere_datacenter_name }}
+{% else %}
+  # datacenter_name:
 {% endif %}
 {% if vsphere_datastore_name %}
   datastore_name: {{ vsphere_datastore_name }}
+{% else %}
+  # datastore_name:
 {% endif %}
 {% if vsphere_cluster_name %}
   cluster_name: {{ vsphere_cluster_name }}
+{% else %}
+  # cluster_name:
 {% endif %}
 {% if vsphere_network_name %}
   network_name: {{ vsphere_network_name }}
+{% else %}
+  # network_name:
 {% endif %}
   # Ensuring that folder name matches the cluster name specified in the install-config.yaml file
   target_folder: '{{ openshift_install_config.name | default('{{ openshift_install_config.name }}') }}'

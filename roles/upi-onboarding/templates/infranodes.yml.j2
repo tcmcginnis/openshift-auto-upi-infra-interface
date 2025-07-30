@@ -1,9 +1,31 @@
 infra_role: infra
+
+{% if infra_num_cpus %}
+infra_num_cpus: {{ infra_num_cpus }}
+{% else %}
 infra_num_cpus: 4
+{% endif %}
+{% if infra_num_cpu_cores_per_socket %}
+infra_num_cpu_cores_per_socket: {{ infra_num_cpu_cores_per_socket }}
+{% else %}
 infra_num_cpu_cores_per_socket: 2
+{% endif %}
+{% if infra_memory_gb %}
+infra_memory_gb: {{ infra_memory_gb }}
+{% else %}
 infra_memory_gb: 8
+{% endif %}
+{% if infra_network_name %}
 #infra_network_name: default-network-name-for-all-infras
-infra_disk_gb: 250
+{% else %}
+#infra_network_name: default-network-name-for-all-infras
+{% endif %}
+{% if infra_disk_gb %}
+infra_disk_gb: {{ infra_disk_gb }}
+{% else %}
+# infra_disk_gb: 250
+{% endif %}
+
 infra_ignition: worker
 
 infra_nodes:

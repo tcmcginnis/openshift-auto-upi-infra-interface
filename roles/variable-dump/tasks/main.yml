@@ -12,8 +12,12 @@
       - "infra_nodes: {{ infra_nodes }}"
       - "worker_nodes: {{ worker_nodes }}"
       - "cluster_num_cpus: {{ cluster_num_cpus }}"
+      - "mastercount: {{ mastercount }}"
+      - "infracount: {{ infracount }}"
+      - "workercount: {{ workercount }}"
       - vsphere variable: '{{ vsphere }}'
       - vsphere variable: '{{ vsphere.datacenter_name }}'
+
 
 - name: varlookup
   ansible.builtin.debug: msg="{{ lookup('ansible.builtin.varnames', '^vsphere.*') }}"

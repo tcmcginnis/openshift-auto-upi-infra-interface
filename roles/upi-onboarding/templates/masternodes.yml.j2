@@ -1,9 +1,32 @@
 master_role: master
+
+{% if master_num_cpus %}
+master_num_cpus: {{ master_num_cpus }}
+{% else %}
 master_num_cpus: 4
-#master_gateway: 192.168.0.2
-#master_num_cpu_cores_per_socket: 2
+{% endif %}
+{% if  master_gateway %}
+master_gateway: {{ master_gateway }}
+{% else %}
+#master_gateway: 
+{% endif %}
+{% if master_num_cpu_cores_per_socket %}
+master_num_cpu_cores_per_socket: {{ master_num_cpu_cores_per_socket }}
+{% else %}
+master_num_cpu_cores_per_socket: 2
+{% endif %}
+{% if master_memory_gb %}
+master_memory_gb: {{ master_memory_gb }}
+{% else %}
 master_memory_gb: 8
+{% endif %}
+{% if master_disk_gb %}
+master_disk_gb: {{ master_disk_gb }}
+{% else %}
 master_disk_gb: 250
+{% endif %}
+
 #ignition_config: values >> bootstrap.ign | master.ign | worker.ign   (suffix .ign is added by automation)
 master_ignition: master
+
 master_nodes:
