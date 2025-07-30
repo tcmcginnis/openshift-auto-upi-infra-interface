@@ -26,7 +26,7 @@
       - openshift_install_config.name: '{{ openshift_install_config.name }}'
 
 # tasks file for vsphere config definition yaml
-- name: Jinja 2 template the install-config.yaml file
+- name: Jinja 2 template the vsphere.yml variable yaml file
   template:
     src:  vsphere.yml.j2
     dest:  "{{ vsphere_config_file }}"

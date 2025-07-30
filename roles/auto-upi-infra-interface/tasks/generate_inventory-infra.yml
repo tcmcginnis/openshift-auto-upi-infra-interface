@@ -34,7 +34,7 @@
       - "infra_num_cpus: {{ infra_num_cpus }}"
 
 # tasks file for auto-upi-infra-interface
-- name: Jinja 2 template the install-config.yaml file
+- name: Jinja 2 template the openshift_cluster_hosts.yml file
   template:
     src:  openshift_cluster_hosts.yml.j2
     dest:  "{{ temp_node_file.path }}"

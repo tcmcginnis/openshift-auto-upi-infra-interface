@@ -20,7 +20,7 @@
       - cluster_name: '{{ cluster_name }}'
 
 # tasks file for openshift install config definition yaml
-- name: Jinja 2 template the install-config.yaml file
+- name: Jinja 2 template the openshift_install_config.yml file
   template:
     src:  openshift_install_config.yml.j2
     dest:  "{{ install_config_file }}"
