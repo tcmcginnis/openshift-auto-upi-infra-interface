@@ -5,7 +5,6 @@ vsphere_creds:
   # Verify server certificate when connecting to vSphere
   validate_certs: False
 vsphere:
-  datastore_name: Datastore UNSPECIFIED
   datacenter_name: Datacenter UNSPECIFIED
   datastore_name: Datastore UNSPECIFIED
   cluster_name: Cluster UNSPECIFIED
@@ -16,3 +15,4 @@ vsphere:
 
 openshift_install_config:
   name: 'DEFAULT/TARGET/FOLDER'
+

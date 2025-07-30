@@ -1,9 +1,4 @@
 ---
-- name: display value within loop
-  ansible.builtin.debug:
-    msg:
-      - "master_memory_gb={{ master_memory_gb }}"
-
 # tasks file for upi-onboarding
 - name: Create or validate config yaml path
   ansible.builtin.file:

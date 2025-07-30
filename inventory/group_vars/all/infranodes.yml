@@ -1,21 +1,22 @@
 infra_role: infra
 infra_num_cpus: 8
-#infra_num_cpu_cores_per_socket: 2
-infra_memory_gb: 32-fromallall
+infra_num_cpu_cores_per_socket: 2
+infra_memory_gb: 32
 #infra_network_name: default-network-name-for-all-infras
 infra_disk_gb: 250
 infra_ignition: worker
 
 infra_nodes:
+ - name: missing
 # - name: sample_infra1
 #   ip: 192.168.0.105
-#   macaddr: 00:50:56:97:e2:fd
+#   macaddr: 00:50:56:97:e2:fd   (optional)
 
 # - name: sample_infra2
 #   ip: 192.168.0.106
-#   macaddr: 00:50:56:97:e2:fe
+#   macaddr: 00:50:56:97:e2:fe   (optional)
 
 # - name: sample_infra3
 #   ip: 192.168.0.107
-#   macaddr: 00:50:56:97:e2:ff
+#   macaddr: 00:50:56:97:e2:ff   (optional)
 
