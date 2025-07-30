@@ -8,6 +8,10 @@ mastercount: {{ mastercount }}
 infracount: {{ infracount }}
 workercount: {{ workercount }}
 inventory_file: file_for_new-ocp4-cluster
+{% if OCP_version %}
 OCP_version: {{ OCP_version }}
+{% else %}
+# OCP_version:
+{% endif %}
 master_replicas: 1
 worker_replicas: 1

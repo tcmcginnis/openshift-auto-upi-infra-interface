@@ -1,3 +1,4 @@
+{% if vsphere_datacenter_name %}
 vsphere:
 {% if vsphere_datacenter_name %}
   datacenter_name: {{ vsphere_datacenter_name }}
@@ -14,3 +15,4 @@ vsphere:
   # Ensuring that folder name matches the cluster name specified in the install-config.yaml file
   target_folder: '{{ openshift_install_config.name | default('{{ openshift_install_config.name }}') }}'
   template_name: RHCOS
+{% endif %}

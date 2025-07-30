@@ -9,7 +9,7 @@
       - "ip_address={{ ip_address }}"
 
 # tasks file for defining a cluster node
-- name: Jinja 2 template the install-config.yaml file
+- name: Jinja 2 template the node definition entry
   template:
     src:  nodedef_entry.j2
     dest:  "{{ temp_node_file.path }}"
