@@ -1,4 +1,4 @@
-- hosts: helper
+- hosts: localhost
   user: root
   vars:
   roles:

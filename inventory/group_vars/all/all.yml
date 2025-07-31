@@ -11,7 +11,7 @@ master_replicas: 1
 worker_replicas: 1
 inventory_header: header-for-ALL
 inventory_file: file_for-ALL
-#OCP_version: 4.12.43
+OCP_version: 4.12.43
 
 nodename_FQDN:
 cluster_gateway: Not configured

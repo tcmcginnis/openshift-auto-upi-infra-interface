@@ -1,3 +1,9 @@
-[all]
-[cluster_sample-ocp4]
-helper ansible_connection=local
+all:
+  vars:
+    ansible_connection: local
+  children:
+    cluster_sample-ocp4:
+      hosts:
+        localhost:
+          ansible_host: localhost
+
