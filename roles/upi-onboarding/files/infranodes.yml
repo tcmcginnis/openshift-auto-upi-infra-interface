@@ -1,0 +1,5 @@
+# infra_num_cpus: 4
+# infra_num_cpu_cores_per_socket: 2
+# infra_memory_gb: 8
+# infra_network_name: default-network-name-for-all-infras
+# infra_disk_gb: 250

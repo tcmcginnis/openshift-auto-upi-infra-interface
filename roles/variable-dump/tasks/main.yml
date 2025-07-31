@@ -8,10 +8,12 @@
 - name: display varialbles
   debug:
     msg:
+      - "cluster_name: {{ cluster_name }}"
+      - "cluster_base_domain: {{ cluster_base_domain }}"
+      - "OCP_version: {{ OCP_version }}"
       - "master_nodes: {{ master_nodes }}"
       - "infra_nodes: {{ infra_nodes }}"
       - "worker_nodes: {{ worker_nodes }}"
-      - "cluster_num_cpus: {{ cluster_num_cpus }}"
       - "mastercount: {{ mastercount }}"
       - "infracount: {{ infracount }}"
       - "workercount: {{ workercount }}"

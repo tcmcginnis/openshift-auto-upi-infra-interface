@@ -1,0 +1,10 @@
+# cluster_network_name:
+# cluster_gateway:
+# cluster_netmask:
+# mastercount: 3
+# infracount: 3
+# workercount: 3
+# inventory_file: file_for_new-ocp4-cluster
+# OCP_version:
+# master_replicas: 1
+# worker_replicas: 1

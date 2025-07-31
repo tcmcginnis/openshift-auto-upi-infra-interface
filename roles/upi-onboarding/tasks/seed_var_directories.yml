@@ -1,0 +1,27 @@
+---
+# tasks file to initialize all additional group_var levels
+
+# Initialize domain var folder ====================================
+- name: Copy all files within the role to domain group_vars "{{ config_vars_path_domain }}"
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ config_vars_path_domain }}"
+    force: true
+  loop: "{{ query('ansible.builtin.fileglob', '*') }}"
+
+# Initialize app var folder ====================================
+- name: Copy all files within the role to domain group_vars "{{ config_vars_path_app }}"
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ config_vars_path_app }}"
+    force: true
+  loop: "{{ query('ansible.builtin.fileglob', '*') }}"
+
+# Initialize app/domain var folder ====================================
+- name: Copy all files within the role to domain group_vars "{{ config_vars_path_appdomain }}"
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ config_vars_path_appdomain }}"
+    force: true
+  loop: "{{ query('ansible.builtin.fileglob', '*') }}"
+

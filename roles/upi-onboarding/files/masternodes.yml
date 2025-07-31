@@ -1,0 +1,5 @@
+#master_num_cpus: 4
+#master_gateway: 
+#master_num_cpu_cores_per_socket: 2
+#master_memory_gb: 8
+#master_disk_gb: 250

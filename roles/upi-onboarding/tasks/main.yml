@@ -5,10 +5,11 @@
     path: "{{ config_path }}"
     state: directory
 
-- name: Create or validate config yaml variable path
-  ansible.builtin.file:
-    path: "{{ config_vars_path }}"
-    state: directory
+- name: Define group_var paths
+  include_tasks: create_group_var_dirs.yml
+
+- name: Initialize all additional group_var levels
+  include_tasks: seed_var_directories.yml
 
 - name: Jinja 2 template the inventory file for ocp auto
   template:
@@ -18,7 +19,7 @@
 - name: Jinja 2 template the "all.yml" config yaml for the cluster
   template:
     src:  all.yml.j2
-    dest:  "{{ config_vars_path }}/all.yml"
+    dest:  "{{ config_vars_path_cluster }}/all.yml"
 
 - import_tasks: gettempfile.yml
 
@@ -45,5 +46,5 @@
 - name: Jinja 2 template the config yaml for vSphere
   template:
     src:  vsphere.yml.j2
-    dest:  "{{ config_vars_path }}/vsphere.yml"
+    dest:  "{{ config_vars_path_cluster }}/vsphere.yml"
 

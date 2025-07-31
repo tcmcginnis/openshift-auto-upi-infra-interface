@@ -1,3 +1,14 @@
-[all]
-[cluster_{{ cluster_name }}]
-helper ansible_connection=local
+all:
+  vars:
+    ansible_connection: local
+  children:
+    domain_{{ domain_name }}:
+      children:
+        app_{{ appcode }}:
+          children:
+            app_{{ appcode }}@{{ domain_name }}:
+              children:
+                cluster_{{ cluster_name }}:
+                  hosts:
+                    localhost:
+                      ansible_host: localhost

@@ -1,0 +1,22 @@
+---
+# tasks file for upi-onboarding
+- name: Create or validate config yaml variable path "{{ config_vars_path_cluster }}" for the cluster "{{ cluster_name }}"
+  ansible.builtin.file:
+    path: "{{ config_vars_path_cluster }}"
+    state: directory
+
+- name: Create or validate config yaml variable path for the cluster "{{ domain_name }}"
+  ansible.builtin.file:
+    path: "{{ config_vars_path_domain }}"
+    state: directory
+
+- name: Create or validate config yaml variable path for the app "{{ appcode }}"
+  ansible.builtin.file:
+    path: "{{ config_vars_path_app }}"
+    state: directory
+
+- name: Create or validate config yaml variable path for "app@domain"
+  ansible.builtin.file:
+    path: "{{ config_vars_path_appdomain }}"
+    state: directory
+

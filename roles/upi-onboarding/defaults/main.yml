@@ -4,12 +4,20 @@ cluster_name: unknown
 network_subnet: 192.168.0
 network_cidr: 192.168.0/24
 config_path: "{{ playbook_dir }}/inventory"
-config_vars_path: "{{ config_path }}/group_vars/cluster_{{ cluster_name }}"
-config_yaml_master: "{{ config_vars_path }}/masternodes.yml"
-config_yaml_infra: "{{ config_vars_path }}/infranodes.yml"
-config_yaml_workers: "{{ config_vars_path }}/workernodes.yml"
+config_vars_path_domain: "{{ config_path }}/group_vars/domain_{{ domain_name }}"
+config_vars_path_app: "{{ config_path }}/group_vars/app_{{ appcode }}"
+config_vars_path_appdomain: "{{ config_path }}/group_vars/app_{{ appcode }}@{{ domain_name }}"
+config_vars_path_cluster: "{{ config_path }}/group_vars/cluster_{{ cluster_name }}"
+config_yaml_master: "{{ config_vars_path_cluster }}/masternodes.yml"
+config_yaml_infra: "{{ config_vars_path_cluster }}/infranodes.yml"
+config_yaml_workers: "{{ config_vars_path_cluster }}/workernodes.yml"
+config_vars_domain: 
 
 mastercount: 3
 infracount: 3
 workercount: 3
 
+domain_{{ domain_name }}:
+app_{{ appcode }}:
+app_{{ appcode }}@{{ domain_name }}:
+cluster_{{ cluster_name }}:
