@@ -4,19 +4,24 @@
   ansible.builtin.file:
     path: "{{ config_vars_path_cluster }}"
     state: directory
+  register: dir_state
 
 - name: Create or validate config yaml variable path for the cluster "{{ domain_name }}"
   ansible.builtin.file:
     path: "{{ config_vars_path_domain }}"
     state: directory
+  register: config_vars_path_domain_state
 
 - name: Create or validate config yaml variable path for the app "{{ appcode }}"
   ansible.builtin.file:
     path: "{{ config_vars_path_app }}"
     state: directory
+  register: config_vars_path_app_state
 
 - name: Create or validate config yaml variable path for "app@domain"
   ansible.builtin.file:
     path: "{{ config_vars_path_appdomain }}"
     state: directory
+  register: config_vars_path_appdomain_state
+
 
