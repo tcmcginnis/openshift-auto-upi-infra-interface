@@ -8,7 +8,7 @@
     dest: "{{ config_vars_path_domain }}"
     force: false
   loop: "{{ query('ansible.builtin.fileglob', '*') }}"
-  when: "{{ config_vars_path_domain_state.changed }}"
+#  when: "{{ config_vars_path_domain_state.changed }}"
 
 # Initialize app var folder ====================================
 - name: Copy all files within the role to domain group_vars "{{ config_vars_path_app }}"
@@ -17,7 +17,7 @@
     dest: "{{ config_vars_path_app }}"
     force: false
   loop: "{{ query('ansible.builtin.fileglob', '*') }}"
-  when: "{{ config_vars_path_app_state.changed }}"
+#  when: "{{ config_vars_path_app_state.changed }}"
 
 # Initialize app/domain var folder ====================================
 - name: Copy all files within the role to domain group_vars "{{ config_vars_path_appdomain }}"
@@ -26,5 +26,5 @@
     dest: "{{ config_vars_path_appdomain }}"
     force: false
   loop: "{{ query('ansible.builtin.fileglob', '*') }}"
-  when: "{{ config_vars_path_appdomain_state.changed }}"
+#  when: "{{ config_vars_path_appdomain_state.changed }}"
 
