@@ -6,7 +6,7 @@
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ config_vars_path_domain }}"
-    force: true
+    force: false
   loop: "{{ query('ansible.builtin.fileglob', '*') }}"
   when: "{{ config_vars_path_domain_state.changed }}"
 
@@ -15,7 +15,7 @@
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ config_vars_path_app }}"
-    force: true
+    force: false
   loop: "{{ query('ansible.builtin.fileglob', '*') }}"
   when: "{{ config_vars_path_app_state.changed }}"
 
@@ -24,7 +24,7 @@
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ config_vars_path_appdomain }}"
-    force: true
+    force: false
   loop: "{{ query('ansible.builtin.fileglob', '*') }}"
   when: "{{ config_vars_path_appdomain_state.changed }}"
 
