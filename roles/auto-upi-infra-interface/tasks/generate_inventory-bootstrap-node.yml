@@ -1,0 +1,48 @@
+---
+- name: Load template variables for the node template
+  ansible.builtin.set_fact:
+    nodename_FQDN: "{{ bootstrap_node.name }}"
+    node_role: "{{ bootstrap_role }}"
+    node_ipaddr: "{{ bootstrap_node.ip }}"
+    node_gateway: "{{ bootstrap_node.gateway | default(cluster_gateway) }}"
+    node_network_name: "{{ bootstrap_node.network_name | default(cluster_network_name) }}"
+    node_macaddr: "{{ bootstrap_node.macaddr | default(omit) }}"
+    node_num_cpus: "{{ bootstrap_node.num_cpus | default(bootstrap_num_cpus) }}"
+    node_num_cpu_cores_per_socket: "{{ bootstrap_node.num_cpu_cores_per_socket | default(bootstrap_num_cpu_cores_per_socket) }}"
+    node_memory_gb: "{{ bootstrap_node.memory_gb | default(bootstrap_memory_gb) }}"
+    node_disk_gb: "{{ bootstrap_node.node_disk_gb | default(bootstrap_disk_gb) }}"
+    node_ignition: "{{ bootstrap_ignition }}"
+
+- name: display loop varialbles
+  debug:
+    msg:
+      - "loop variable: {{ bootstrap_node }}"
+      - "name: {{ bootstrap_node.name }}"
+      - "hostname: {{ nodename_FQDN }}"
+      - "role: {{ node_role }}"
+      - "ipaddr: {{ node_ipaddr }}"
+      - "gateway: {{ node_gateway }}"
+      - "network_name: {{ node_network_name }}"
+      - "macaddr: {{ node_macaddr }}"
+      - "num_cpus: {{ node_num_cpus }}"
+      - "num_cpu_cores_per_socket: {{ node_num_cpu_cores_per_socket }}"
+      - "memory_gb: {{ node_memory_gb }}"
+      - "disk_gb: {{ node_disk_gb }}"
+      - "ignition_config: {{ node_ignition }}.ign"
+      - "bootstrap_memory_gb: {{ bootstrap_memory_gb }}"
+      - "bootstrap_num_cpu_cores_per_socket: {{ bootstrap_num_cpu_cores_per_socket }}"
+      - "bootstrap_num_cpus: {{ bootstrap_num_cpus }}"
+
+# tasks file for auto-upi-infra-interface
+- name: Jinja 2 template the openshift_cluster_hosts.yml file
+  template:
+    src:  openshift_cluster_hosts.yml.j2
+    dest:  "{{ temp_node_file.path }}"
+
+- name: add to file
+  blockinfile:
+    path: '{{ node_inventory_file }}'
+    insertafter: eof
+    block: "{{lookup('file', '{{ temp_node_file.path }}')}}"
+    marker: ""
+

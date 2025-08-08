@@ -11,6 +11,11 @@
       - "temp_node_file: {{ temp_node_file }}"
       - "path: {{ temp_node_file.path }}"
 
+- include_tasks: generate_inventory-bootstrap-node.yml
+  loop: "{{ bootstrap_node }}"
+  loop_control:
+    loop_var: bootstrap_node
+
 - include_tasks: generate_inventory-controlplane.yml
   loop: "{{ master_nodes }}"
   loop_control:
