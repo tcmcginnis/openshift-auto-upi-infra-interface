@@ -1,0 +1,11 @@
+bootstrap_role: bootstrap
+
+bootstrap_num_cpus: 8
+bootstrap_gateway: 
+bootstrap_num_cpu_cores_per_socket: 2
+bootstrap_memory_gb: 32
+bootstrap_disk_gb: 150
+
+#ignition_config: values >> bootstrap.ign | master.ign | worker.ign   (suffix .ign is added by automation)
+bootstrap_ignition: bootstrap
+

@@ -1,0 +1,31 @@
+bootstrap_role: bootstrap
+
+{% if bootstrap_num_cpus %}
+bootstrap_num_cpus: {{ bootstrap_num_cpus }}
+{% else %}
+#bootstrap_num_cpus:
+{% endif %}
+{% if  bootstrap_gateway %}
+bootstrap_gateway: {{ bootstrap_gateway }}
+{% else %}
+#bootstrap_gateway: 
+{% endif %}
+{% if bootstrap_num_cpu_cores_per_socket %}
+bootstrap_num_cpu_cores_per_socket: {{ bootstrap_num_cpu_cores_per_socket }}
+{% else %}
+#bootstrap_num_cpu_cores_per_socket:
+{% endif %}
+{% if bootstrap_memory_gb %}
+bootstrap_memory_gb: {{ bootstrap_memory_gb }}
+{% else %}
+#bootstrap_memory_gb:
+{% endif %}
+{% if bootstrap_disk_gb %}
+bootstrap_disk_gb: {{ bootstrap_disk_gb }}
+{% else %}
+#bootstrap_disk_gb:
+{% endif %}
+
+#ignition_config: values >> bootstrap.ign | master.ign | worker.ign   (suffix .ign is added by automation)
+bootstrap_ignition: bootstrap
+

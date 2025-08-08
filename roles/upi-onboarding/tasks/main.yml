@@ -29,6 +29,9 @@
     infracount: 3
     workercount: 3
 
+- name: define the bootstrap node
+  include_tasks: bootstrap_node.yml
+
 - name: define control plane
   include_tasks: controlplane.yml
 

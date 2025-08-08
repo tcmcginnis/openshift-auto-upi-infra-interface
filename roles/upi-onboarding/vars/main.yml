@@ -6,6 +6,13 @@ cluster_gateway:
 cluster_netmask:
 OCP_version:
 
+# vars for bootstrap node
+bootstrap_num_cpus:
+bootstrap_gateway:
+bootstrap_num_cpu_cores_per_socket:
+bootstrap_memory_gb:
+bootstrap_disk_gb:
+
 # vars for master nodes
 master_num_cpus:
 master_gateway: 

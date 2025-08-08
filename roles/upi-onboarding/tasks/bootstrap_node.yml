@@ -1,0 +1,23 @@
+---
+# tasks file for control plane
+
+- name: Set key control variables
+  set_fact:
+    config_yaml_file: "{{ config_yaml_bootstrap }}"
+    config_yaml_template: bootstrap.yml.j2
+
+- name: Jinja 2 template the the defaults for various node types (master,infra,worker)
+  template:
+    src: "{{ config_yaml_template }}"
+    dest: "{{ config_yaml_file }}"
+    force: yes
+    mode: 0644
+
+- name: Create node definition for bootstrap node
+  include_tasks: getnode.yml
+
+- name: Remove temp node file
+  ansible.builtin.file:
+    path: "{{ temp_node_file.path }}"
+    state: absent
+
