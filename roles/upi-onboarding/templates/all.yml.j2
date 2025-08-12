@@ -6,15 +6,15 @@ cluster_network_name: {{ cluster_network_name }}
 {% else %}
 # cluster_network_name:
 {% endif %}
+{% if cluster_network_cidr %}
+cluster_network_cidr: {{ cluster_network_cidr }}
+{% else %}
+# cluster_network_cidr:
+{% endif %}
 {% if cluster_gateway %}
 cluster_gateway: {{ cluster_gateway }}
 {% else %}
 # cluster_gateway:
-{% endif %}
-{% if cluster_netmask %}
-cluster_netmask: {{ cluster_netmask }}
-{% else %}
-# cluster_netmask:
 {% endif %}
 mastercount: {{ mastercount }}
 infracount: {{ infracount }}

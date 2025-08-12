@@ -1,6 +1,6 @@
 # cluster_network_name:
+# cluster_network_cidr:
 # cluster_gateway:
-# cluster_netmask:
 # mastercount: 3
 # infracount: 3
 # workercount: 3

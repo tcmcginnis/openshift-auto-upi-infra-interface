@@ -14,10 +14,16 @@
     mode: '0644'
     state: touch
 
+- name: Compute netmask from network cidr
+  ansible.builtin.set_fact:
+    cluster_netmask: "{{ cluster_network_cidr | ansible.utils.ipaddr('netmask') }}"
+
 - name: display install config varialbles
   debug:
     msg:
       - cluster_name: '{{ cluster_name }}'
+      - cluster_cidr: '{{ cluster_cidr }}'
+      - cluster_netmask: '{{ cluster_netmask }}'
 
 # tasks file for openshift install config definition yaml
 - name: Jinja 2 template the openshift_install_config.yml file

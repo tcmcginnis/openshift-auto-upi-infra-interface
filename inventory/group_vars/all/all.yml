@@ -15,5 +15,5 @@ OCP_version: 4.15.45
 
 nodename_FQDN:
 cluster_gateway: Not configured
-cluster_netmask: 255.255.255.0
+cluster_network_cidr: Not configured
 cluster_network_name: vmware-network-name

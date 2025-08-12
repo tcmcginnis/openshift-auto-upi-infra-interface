@@ -2,8 +2,8 @@
 # vars file for upi-onboarding
 # GENERAL vars from all.yml
 cluster_network_name:
+cluster_network_cidr:
 cluster_gateway:
-cluster_netmask:
 OCP_version:
 
 # vars for bootstrap node

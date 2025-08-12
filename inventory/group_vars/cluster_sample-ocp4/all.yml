@@ -2,8 +2,8 @@ appcode: abc
 cluster_name: new-ocp4-cluster
 cluster_base_domain: mclabs.us
 cluster_network_name: commonNetwork4thisCluster
+cluster_network_cidr: 192.168.0/24
 cluster_gateway: 192.168.0.1
-cluster_netmask: 255.255.255.0
 mastercount: 3
 infracount: 3
 workercount: 3

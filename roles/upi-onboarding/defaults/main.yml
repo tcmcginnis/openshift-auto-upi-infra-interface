@@ -2,7 +2,7 @@
 # defaults file for upi-onboarding
 cluster_name: unknown
 network_subnet: 192.168.0
-network_cidr: 192.168.0/24
+cluster_network_cidr: 192.168.0/24
 config_path: "{{ playbook_dir }}/inventory"
 config_vars_path_domain: "{{ config_path }}/group_vars/domain_{{ domain_name }}"
 config_vars_path_app: "{{ config_path }}/group_vars/app_{{ appcode }}"
