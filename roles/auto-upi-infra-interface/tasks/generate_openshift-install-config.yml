@@ -22,7 +22,7 @@
   debug:
     msg:
       - cluster_name: '{{ cluster_name }}'
-      - cluster_cidr: '{{ cluster_cidr }}'
+      - cluster_network_cidr: '{{ cluster_network_cidr }}'
       - cluster_netmask: '{{ cluster_netmask }}'
 
 # tasks file for openshift install config definition yaml
